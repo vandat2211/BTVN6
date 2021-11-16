@@ -34,7 +34,7 @@ public class add extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         initUI();
         Intent intent1=getIntent();
-//        String idd=intent1.getStringExtra("id");
+       String idd=intent1.getStringExtra("id");
         String title=intent1.getStringExtra("t");
         String content=intent1.getStringExtra("c");
         String key = intent1.getStringExtra("KEY");
@@ -42,14 +42,12 @@ public class add extends AppCompatActivity {
             tvname.setText("Them thu muc");
             tvAdd.setVisibility(View.VISIBLE);
             tvsua.setVisibility(View.GONE);
-//            edid.setVisibility(View.GONE);
+
         } else if (key.equals("101")) {
             tvname.setText("chinh sua");
-//            edid.setVisibility(View.VISIBLE);
             tvAdd.setVisibility(View.GONE);
             tvsua.setVisibility(View.VISIBLE);
         }
-//        edid.setText(idd);
         edtTitleAdd.setText(title);
         edtContentAdd.setText(content);
 
@@ -79,7 +77,7 @@ public class add extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(add.this, androidx.appcompat.R.anim.abc_fade_in));
-                database.updatedb(new Folder(edtTitleAdd.getText().toString(), edtContentAdd.getText().toString()));
+                database.updatedb(new Folder(Integer.parseInt(idd),edtTitleAdd.getText().toString(), edtContentAdd.getText().toString()));
                 cancelActivity();
             }
         });
